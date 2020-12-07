@@ -1,5 +1,5 @@
 :root {
-  --clr-primary: rgb(54, 112, 199);
+  --clr-primary: rgb(207, 76, 76);
   --clr-light: #f4f4f4;
   --clr-dark: #333;
   --clr-warning: rgb(99, 36, 36);
@@ -20,10 +20,12 @@ body {
   background-color: var(--clr-primary);
   color: var(--clr-light);
   display: grid;
-  grid: 'header header header header' auto '...... lists  active ......' auto/1fr minmax(
+  grid:
+    'header header header header' auto '...... lists  active ......' auto/1fr minmax(
       100px,
       300px
-    ) minmax(250px, 500px) 1fr;
+    )
+    minmax(250px, 500px) 1fr;
 }
 
 .title {
