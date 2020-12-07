@@ -1,27 +1,29 @@
 :root {
-  --clr-primary: rgb(54, 199, 78);
+  --clr-primary: rgb(54, 112, 199);
   --clr-light: #f4f4f4;
   --clr-dark: #333;
   --clr-warning: rgb(99, 36, 36);
 }
 
-* {
+*,
+*::before,
+*::after {
   font-family: inherit;
   box-sizing: border-box;
 }
 
 body {
+  margin: 0;
   font-family: 'Work Sans', sans-serif;
   font-weight: 300;
   font-size: 1.5rem;
   background-color: var(--clr-primary);
   color: var(--clr-light);
-
   display: grid;
-  grid:
-    'header header header header' auto
-    '...... lists active ......' auto /
-    1fr minmax(100px, 300px) minmax(250px, 500px) 1fr;
+  grid: 'header header header header' auto '...... lists  active ......' auto/1fr minmax(
+      100px,
+      300px
+    ) minmax(250px, 500px) 1fr;
 }
 
 .title {
@@ -94,9 +96,20 @@ form {
   font-size: inherit;
   outline: none;
   padding: 0.25em;
-
   transition: border-bottom 150ms ease-in;
   order: 2;
+}
+
+.new::-webkit-input-placeholder {
+  opacity: 0.4;
+}
+
+.new:-ms-input-placeholder {
+  opacity: 0.4;
+}
+
+.new::-ms-input-placeholder {
+  opacity: 0.4;
 }
 
 .new::placeholder {
@@ -105,6 +118,18 @@ form {
 
 .new:focus {
   border-bottom-width: 3px;
+}
+
+.new:focus::-webkit-input-placeholder {
+  opacity: 0.15;
+}
+
+.new:focus:-ms-input-placeholder {
+  opacity: 0.15;
+}
+
+.new:focus::-ms-input-placeholder {
+  opacity: 0.15;
 }
 
 .new:focus::placeholder {
@@ -125,7 +150,6 @@ form {
 
 .todo-list {
   --spacer: 2rem;
-
   grid-area: active;
   background: var(--clr-light);
   color: var(--clr-dark);
@@ -163,7 +187,7 @@ form {
 }
 
 .task label {
-  display: inline-flex;
+  display: flex-inline;
   align-items: center;
   position: relative;
 }
@@ -193,12 +217,16 @@ form {
   cursor: pointer;
   border: 2px solid currentColor;
   border-radius: 50%;
+  -webkit-transform: scale(1);
   transform: scale(1);
+  transition: -webkit-transform 300ms ease-in-out;
   transition: transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
 }
 
 .task:hover .custom-checkbox,
 [type='checkbox']:focus + label .custom-checkbox {
+  -webkit-transform: scale(1.2);
   transform: scale(1.2);
   color: var(--clr-primary);
 }
@@ -219,15 +247,22 @@ form {
   left: 0;
   right: 0;
   left: 1.5em;
+  top: 50%;
   height: 3px;
   background: currentColor;
+  -webkit-transform: scaleX(0);
   transform: scaleX(0);
+  -webkit-transform-origin: right;
   transform-origin: right;
+  transition: -webkit-transform 150ms ease-in-out;
   transition: transform 150ms ease-in-out;
+  transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
 }
 
 [type='checkbox']:checked + label::after {
+  -webkit-transform: scaleX(1);
   transform: scaleX(1);
+  -webkit-transform-origin: left;
   transform-origin: left;
 }
 
